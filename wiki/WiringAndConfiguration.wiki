@@ -68,13 +68,15 @@ There is a configuration format for each supported display type; this release pr
 
 You can use the standard ks0108_Arduino_Config.h file for any board, including the Mega, Sanguino or Teensy, but the performance is improved using the pin assignments given in the 
 Board specific configuration  files included in the download:
-ks0108_Arduino_Config.h    - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
-ks0108_Mega_Config.h  - config for Mega using same pins as  ks0108_Mega.h from the old ks0108 library
-ks0108_Sanguino_Config.h  - config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
-ks0108_Teensy_Config.h   -  config for Teensy and Teensy++
-Bear in mind that the wiring diagrams shown above are for the pin assignments in ks0108_Arduino_Config.h, if you use a different pin configuration then remember to wire your panel to match the pin definitions in the active configuration file. Note that the ks0108 configuration files have an optional define named glcdRES that will reset the display when the library is initialized at start-up. This is only needed if the reset pin on the display is not connected to the Arduino reset pin.
+* ks0108_Arduino_Config.h    - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
+* ks0108_Mega_Config.h  - config for Mega using same pins as  ks0108_Mega.h from the old ks0108 library
+* ks0108_Sanguino_Config.h  - config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
+* ks0108_Teensy_Config.h   -  config for Teensy and Teensy++
 
-Note that glcd_Config.h contains some other user defines that are explained in that files comments, but these should not need to be changed for normal operation. 
+Bear in mind that the wiring diagrams shown above are for the pin assignments in ks0108_Arduino_Config.h, if you use a different pin configuration then remember to wire your panel to match the pin definitions in the active configuration file.
+Note that the ks0108 configuration files have an optional define named glcdRES that will reset the display when the library is initialized at start-up. This is only needed if the reset pin on the display is not connected to the Arduino reset pin.
+
+glcd_Config.h contains some other user defines that are explained in the files comments, but these should not need to be changed for normal operation. 
 
 ===GLCDdiags===
 GLCDdiags is a test sketch included in the examples folder. It will validate the connections and test the memory of GLCD module as well as report the active configuration information to the serial port. If your display is not working properly then check the information displayed in the serial monitor. This shows what information the library is using and you can use this to verify if the sketch is configured correctly.  
@@ -83,7 +85,7 @@ GLCDdiags is a test sketch included in the examples folder. It will validate the
 Pins can also be selected by AVR port and pin number. The syntax used is PIN_Pb where Pb represents a PORT and a pin#.
 For example, to specify port D bit 3 you would use PIN_D3
 The following sets glcdCSEL1 (the first chip select) to port D pin 3
-  #define glcdCSEL1	    PIN_D3
+  {#define glcdCSEL1	    PIN_D3}
 See the avrio.h file for more details.
 
 == Troubleshooting == 
