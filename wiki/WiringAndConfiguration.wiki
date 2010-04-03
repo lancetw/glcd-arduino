@@ -66,14 +66,13 @@ Ensure that only one file is selected. You can modify the distributed files or a
 
 There is a configuration format for each supported display type; this release provides configuration for KS0108 and SED1520 panels.
 
-You can use the standard ks0108_Arduino_Config.h file for any board, including the Mega, Sanguino or Teensy, but the performance is improved using the pin assignments given in the 
-Board specific configuration  files included in the download:
-  * [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Arduino_Config.h - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
-  * ks0108_Mega_Config.h  - config for Mega using same pins as  ks0108_Mega.h from the  old ks0108 library
-  * ks0108_Sanguino_Config.h  - config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
-  * ks0108_Teensy_Config.h   -  config for Teensy and Teensy++
+You can use the standard [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Arduino_Config.h ks0108_Arduino_Config.h] file for any board, including the Mega, Sanguino or Teensy, but the performance is improved using the pin assignments given in the board specific configuration  files included in the download:
+  * [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Arduino_Config.h ks0108_Arduino_Config.h] - Configuration file for ks0108 type panels using the standard Arduino pins illustrated above
+  * [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Mega_Config.h ks0108_Mega_Config.h] - Config for Mega using same pins as  ks0108_Mega.h from the  old ks0108 library
+  * [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Sanguino_Config.h ks0108_Sanguino_Config.h] - Config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
+  * [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Teensy_Config.h ks0108_Teensy_Config.h]   -  Config for Teensy and Teensy++
 
-Bear in mind that the wiring diagrams shown above are for the pin assignments in ks0108_Arduino_Config.h, if you use a different pin configuration then remember to wire your panel to match the pin definitions in the active configuration file.
+Bear in mind that the wiring diagrams shown above are for the pin assignments in [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Arduino_Config.h ks0108_Arduino_Config.h], if you use a different pin configuration then remember to wire your panel to match the pin definitions in the active configuration file.
 Note that the ks0108 configuration files have an optional define named glcdRES that will reset the display when the library is initialized at start-up. This is only needed if the reset pin on the display is not connected to the Arduino reset pin.
 
 glcd_Config.h contains some other user defines that are explained in the files comments, but these should not need to be changed for normal operation. 
