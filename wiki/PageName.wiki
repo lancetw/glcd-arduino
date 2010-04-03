@@ -17,30 +17,27 @@ Most GLCD panels require an external preset pot to set the LCD working voltage (
 Here are three common pinouts for KS0108 panels. 
 The numbers under the Arduino column are the Arduino pins used in the configuration file provided in the download, if you alter the wiring to Arduino pins then you must change the pin assignments in the configuration file.
 
-
-|| Connections for common GLCD panels ||
-|| [++GLCD Panel Pinouts++] ||||||||||
 || Arduino pins || Function ||Panel A||Panel B||Panel C|| Comments ||
-||5V || +5 volts || 1 || 2 || 13 || ||
-||Gnd || GND || 2 || 1 || 14 || ||
+||5V || +5 volts || 1 || 2 || 13 ||- ||
+||Gnd || GND || 2 || 1 || 14 ||- ||
 ||n/a|| Contrast in || 3 || 3 || 21 ||Wiper of contrast pot||
-||8 || D0 || 4 || 7 || 1 || ||
-||9 || D1 || 5 || 8 || 2 || ||
-||10|| D2 || 6 || 9 || 3 || ||
-||11|| D3 || 7 || 10 || 4 || ||
-||4 || D4 || 8 || 11 || 5 || ||
-||5 || D5 || 9 || 12 || 6 || ||
-||6 || D6 || 10 || 13 || 7 || ||
-||7 || D7 || 11 || 14 || 8 || ||
+||8 || D0 || 4 || 7 || 1 ||- ||
+||9 || D1 || 5 || 8 || 2 ||- ||
+||10|| D2 || 6 || 9 || 3 ||- ||
+||11|| D3 || 7 || 10 || 4 ||- ||
+||4 || D4 || 8 || 11 || 5 ||- ||
+||5 || D5 || 9 || 12 || 6 ||- ||
+||6 || D6 || 10 || 13 || 7 ||- ||
+||7 || D7 || 11 || 14 || 8 ||- ||
 ||14 (alog0) || CSEL1 || 12 || 15 ||15 ||Chip 1 select ||
 ||15 (alog1) || CSEL2 || 13 || 16 ||16 ||Chip 2 select ||
-||Reset|| 14 || 17 ||18||Connect to reset pin ||
+||Reset|| Reset || 14 || 17 ||18||Connect to reset pin ||
 ||16 (alog2) || R_W || 15 || 5 || 10 ||Read/write || 
 ||17 (alog3) || D_I || 16 || 4 || 11 ||Data/Instruction (aka RS) ||
 ||18 (alog4) || EN || 17 || 6 || 9 ||Enable ||
 ||external || Contrast out || 18 || 18 || 17|| 10k or 20k preset ||
 ||external || Backlight +5 || 19 || 19 ||19||100 to 330 ohm resistor to +5v ||
-||Gnd ||Gnd || Backlight Gnd || 20 || 20 ||20 || ||
+||Gnd || Backlight Gnd || 20 || 20 ||20 ||-||
 
 
 == Troubleshooting == 
