@@ -68,7 +68,7 @@ There is a configuration format for each supported display type; this release pr
 
 You can use the standard ks0108_Arduino_Config.h file for any board, including the Mega, Sanguino or Teensy, but the performance is improved using the pin assignments given in the 
 Board specific configuration  files included in the download:
-  * ks0108_Arduino_Config.h    - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
+  * ks0108_Arduino_Config.h  - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
   * ks0108_Mega_Config.h  - config for Mega using same pins as  ks0108_Mega.h from the  old ks0108 library
   * ks0108_Sanguino_Config.h  - config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
   * ks0108_Teensy_Config.h   -  config for Teensy and Teensy++
@@ -96,10 +96,8 @@ No pixels visible on the display
   * Check contrast voltage (typically between -3 and -4 volts) on contrast-in pin of LCD panel. While the sketch is operating, try gradually adjusting the pot through its range. Some displays are very sensitive to this setting. 
   * Check sketch has compiled ok and downloaded to Arduino. 
   * Run GLCDdiags test sketch, see Configuration section above. 
-
 Left and right side of image reversed 
-  * Swap CSEL1 and CSEL2 wires (or swap pin assignments in header file) 
-
+  * Swap CSEL1 and CSEL2 wires (or swap pin assignments in header file)
 Display garbled 
   * Check all data and command pins are wired correctly and that these match the setting in the header file. 
   * Check the datasheet for your panel to verify appropriate timing values are set in the configuration file.
