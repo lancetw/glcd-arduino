@@ -2,14 +2,13 @@
 
 The distribution includes the system font and arial14 fonts that were distributed with the previous version, but these are now in a subdirectory called ‘fonts’ so you will need to modify the include statement: 
 change
-{{{#include "SystemFont5x7.h"       // system font}}}
+ `#include "SystemFont5x7.h"       // system font`
 to 
-{{{#include "fonts/SystemFont5x7.h"       // system font}}}
-
+ `#include "fonts/SystemFont5x7.h"       // system font`
 Bitmaps are now in a  bitmaps subdirectory and the file names include the width and height; so change :
-{{{#include "ArduinoIcon.h"  // the bitmap distributed with the ks0108 lib}}}
+ `#include "ArduinoIcon.h"  // the bitmap distributed with the ks0108 lib`
 to
-{{{#include "bitmaps/ArduinoIcon64x64.h"  // 64x64 bitmap}}}
+ `#include "bitmaps/ArduinoIcon64x64.h"  // 64x64 bitmap`
 
 The ArduinoIcon.h bitmap file was renamed to ArduinoIcon64x64.h to differentiate it from other size bitmaps supplied for panels of different pixel dimensions.
 
