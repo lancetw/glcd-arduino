@@ -55,10 +55,10 @@ The distribution contains various configuration files for common controller chip
 The display timing can also be configured, but most displays will now work without requiring a configuration change for timing. However, you should check the datasheet for your panel to verify the timing values in the configuration file.
 
 Processor type is determined from the board selected when the sketch is built, this allows Arduino style pin numbers to be mapped to fast direct port IO used by the library. Pin numbering for the following processor types are supported:
- • Standard Arduino (ATmega8,168,328)
- • Mega(ATmega1280)
- • Sanguino (ATmega644P)
- • Teensy and Teensy++
+  * Standard Arduino (ATmega8,168,328)
+  * Mega(ATmega1280)
+  * Sanguino (ATmega644P)
+  * Teensy and Teensy++
 To configure the library for use with other processors, see the section on AVR port and pin numbers below.
 
 The active configuration used when the sketch is compiled is selected in a master configuration file named glcd_Config.h. This contains the configuration files supplied with the distribution and one of these should be made active by removing the comments ‘//’ preceding the desired file name.
@@ -68,7 +68,7 @@ There is a configuration format for each supported display type; this release pr
 
 You can use the standard ks0108_Arduino_Config.h file for any board, including the Mega, Sanguino or Teensy, but the performance is improved using the pin assignments given in the 
 Board specific configuration  files included in the download:
-  * ks0108_Arduino_Config.h  - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
+  * [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/ks0108_Arduino_Config.h - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
   * ks0108_Mega_Config.h  - config for Mega using same pins as  ks0108_Mega.h from the  old ks0108 library
   * ks0108_Sanguino_Config.h  - config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
   * ks0108_Teensy_Config.h   -  config for Teensy and Teensy++
