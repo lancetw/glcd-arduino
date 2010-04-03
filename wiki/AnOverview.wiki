@@ -11,5 +11,5 @@ See the section on sketch migration for details on modifications for the new lib
 
 Table of Contents
  * WiringAndConfiguration
- * [[Migration]]
+ * Migration 
  * FontsAndBitmaps   
