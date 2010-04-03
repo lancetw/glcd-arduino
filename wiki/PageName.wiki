@@ -17,6 +17,8 @@ Most GLCD panels require an external preset pot to set the LCD working voltage (
 Here are three common pinouts for KS0108 panels. 
 The numbers under the Arduino column are the Arduino pins used in the configuration file provided in the download, if you alter the wiring to Arduino pins then you must change the pin assignments in the configuration file.
 
+The numbers in the Panel A/B/C columns are the numbers of the GLCD display panel (see your datasheet).
+
 || Arduino pins || Function ||Panel A||Panel B||Panel C|| Comments ||
 ||5V || +5 volts || 1 || 2 || 13 ||- ||
 ||Gnd || GND || 2 || 1 || 14 ||- ||
