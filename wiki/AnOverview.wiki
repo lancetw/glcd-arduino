@@ -9,7 +9,7 @@ The configuration mechanism has been changed to facilitate use with a broad rang
 
 See the section on sketch migration for details on modifications for the new library.
 
-(this is supposed to work as a table of contents ??)
+Table of Contents
  * WiringAndConfiguration
- * Migration
+ * [[Migration]]
  * FontsAndBitmaps   
