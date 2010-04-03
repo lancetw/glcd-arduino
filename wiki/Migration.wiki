@@ -1,0 +1,28 @@
+== Migrating your sketch from ks0108 to the new GLCD library == 
+
+The distribution includes the system font and arial14 fonts that were distributed with the previous version, but these are now in a subdirectory called ‘fonts’ so you will need to modify the include statement: 
+change
+#include "SystemFont5x7.h"       // system font
+to 
+#include "fonts/SystemFont5x7.h"       // system font
+
+Bitmaps are now in a  bitmaps subdirectory and the file names include the width and height; so change :
+#include "ArduinoIcon.h"  // the bitmap distributed with the ks0108 lib
+To
+#include "bitmaps/ArduinoIcon64x64.h"  // 64x64 bitmap
+
+The ArduinoIcon.h bitmap file was renamed to ArduinoIcon64x64.h to differentiate it from other size bitmaps supplied for panels of different pixel dimensions.
+
+If you are using any of the following functions you should either change the code use the new function or include glcd_Deprecated.h file that will convert the old function name to the new function. 
+  DrawVertLine(x, y, length, color)  is now:   DrawVLine(x, y, length, color)
+  DrawHoriLine(x, y, length, color)  is now :  DrawHLine(x, y, length, color)
+  ClearSysTextLine(row)  is now EraseTextLine(row)
+
+The character output functions behave differently in the new library. 
+The new library now sets or clears all pixels of a font (glyph), the old library did not consistently erase pixels in the whitespace below the glyph.
+This means that if there are graphics very close below the character they may be overwritten with the new text ouput code.
+The workaround is to either move the graphics objects so they are not cleared when the text is written or to draw the graphical objects after the text is displayed. 
+
+Another change is the way a string wraps on the newline character. The old library wrapped to the column where the string started, the new library now wraps to the beginning of the text area. See the section on Text Areas to see how you can use this new capability to control where text will wrap on the display.
+
+See the section on Configuration for details on the new configuration files. You can use the same wiring as the old library but the configuration file format has changed. The ks0108_Config,h file included in the distribution uses exactly the same pins as the ks0108_Arduino.h file supplied with the old library, but if you changed the Arduino pin numbers you will need to modify ks0108_Config to match your wiring.
