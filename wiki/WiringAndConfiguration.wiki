@@ -60,7 +60,7 @@ Processor type is determined from the board selected when the sketch is built, t
   * Teensy and Teensy++
 To configure the library for use with other processors, see the section on AVR port and pin numbers below.
 
-The active configuration used when the sketch is compiled is selected in a master configuration file named glcd_Config.h. This contains the configuration files supplied with the distribution and one of these should be made active by removing the comments ‘//’ preceding the desired file name.
+The active configuration used when the sketch is compiled is selected in a master configuration file named [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/glcd_Config.h glcd_Config.h]. This contains the configuration files supplied with the distribution and one of these should be made active by removing the comments ‘//’ preceding the desired file name.
 Ensure that only one file is selected. You can modify the distributed files or add your own file if you want to create your own variations.
 
 There is a configuration format for each supported display type; this release provides configuration for KS0108 and SED1520 panels.
