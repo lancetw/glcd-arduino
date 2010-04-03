@@ -1,0 +1,103 @@
+== Wiring and Configuration == 
+Panel characteristics (like pixel height and width) and the pins used to connect to the panel must be set in a configuration file. Configuration files are provided for the wiring shown below, you can change the file if you want to use different wiring or panels.
+
+This release supports panels using the KS0108 and SED1520 chips.
+=== KS0108 family === 
+The KS0108 is a popular controller chip used in GLCD displays but the wiring for these panels is not standardized and it is important to check the datasheet for your panel to confirm how it should be wired. Incorrect connections of the signal lines are the most common cause of problems, and particular care should be taken with the power leads as wiring these incorrectly can destroy a panel.
+
+Most GLCD panels require an external preset pot to set the LCD working voltage (contrast) and a fixed resistor to limit the current in the backlight. The datasheet for your panel should provide specific information on the wiring and choice of components for this.
+
+Here are three common pinouts for KS0108 panels. 
+The numbers under the Arduino column are the Arduino pins used in the configuration file provided in the download, if you alter the wiring to Arduino pins then you must change the pin assignments in the configuration file.
+
+The numbers in the Panel A/B/C columns are the numbers of the GLCD display panel (see your datasheet).
+
+|| Arduino pins || Function ||Panel A||Panel B||Panel C|| Comments ||
+||5V || +5 volts || 1 || 2 || 13 ||- ||
+||Gnd || GND || 2 || 1 || 14 ||- ||
+||n/a|| Contrast in || 3 || 3 || 21 ||Wiper of contrast pot||
+||8 || D0 || 4 || 7 || 1 ||- ||
+||9 || D1 || 5 || 8 || 2 ||- ||
+||10|| D2 || 6 || 9 || 3 ||- ||
+||11|| D3 || 7 || 10 || 4 ||- ||
+||4 || D4 || 8 || 11 || 5 ||- ||
+||5 || D5 || 9 || 12 || 6 ||- ||
+||6 || D6 || 10 || 13 || 7 ||- ||
+||7 || D7 || 11 || 14 || 8 ||- ||
+||14 (alog0) || CSEL1 || 12 || 15 ||15 ||Chip 1 select ||
+||15 (alog1) || CSEL2 || 13 || 16 ||16 ||Chip 2 select ||
+||Reset|| Reset || 14 || 17 ||18||Connect to reset pin ||
+||16 (alog2) || R_W || 15 || 5 || 10 ||Read/write || 
+||17 (alog3) || D_I || 16 || 4 || 11 ||Data/Instruction (aka RS) ||
+||18 (alog4) || EN || 17 || 6 || 9 ||Enable ||
+||external || Contrast out || 18 || 18 || 17|| 10k or 20k preset ||
+||external || Backlight +5 || 19 || 19 ||19||100 to 330 ohm resistor to +5v ||
+||Gnd || Backlight Gnd || 20 || 20 ||20 ||-||
+
+The following illustrations show the wiring for these panel types. Although the pin number on the GLCD panels are different, the corresponding functions are connected to the same Arduino pins in all three examples so the supplied ks0108_Config.h configuration file should work without change if you wire your panel following the appropriate diagram.
+The ks0108 needs to have its reset pin taken low for a brief period after power is applied. The diagrams show the display’s reset pin connected to the Arduino reset pin and this will automatically reset the display when the Arduino resets.  You can also wire the display reset pin to a spare Arduino pin and control reset in software by adding a define to the panel configuration file (see configuration below), but this is only necessary if the display reset is not wired to Arduino reset.
+
+http://arduino-glcd.googlecode.com/svn/trunk/glcd/build/doc/ks0108PanelWiring.jpg
+
+=== SED1520 ===
+The SED1520 uses different timing, command pins then the KS0108 and the most common panels have few pixels.
+The distribution contains a generic configuration file named sed1520_Config.h and an example called Modvk5121_Config.h
+for the VK5121 panel. 
+Here is the wiring for a typical SED1520 Panel:
+> image to come <
+
+Mega, Sanguino and Teensy boards provide faster performance by allowing all the data pins to be connected to the same port. Configuration files for these boards are provided in the download that use this more efficient configuration but note that the pins numbers differ from the diagrams above. 
+
+> image to come <
+
+== Configuration ==
+The distribution contains various configuration files for common controller chips and displays. The configuration capability allows selection of a wide choice of pins, support for several different processor types and different display panels. Panel configuration defines the overall display height and width and the height and width of the display controller chips. 
+The display timing can also be configured, but most displays will now work without requiring a configuration change for timing. However, you should check the datasheet for your panel to verify the timing values in the configuration file.
+
+Processor type is determined from the board selected when the sketch is built, this allows Arduino style pin numbers to be mapped to fast direct port IO used by the library. Pin numbering for the following processor types are supported:
+ • Standard Arduino (ATmega8,168,328)
+ • Mega(ATmega1280)
+ • Sanguino (ATmega644P)
+ •Teensy and Teensy++
+To configure the library for use with other processors, see the section on AVR port and pin numbers below.
+
+The active configuration used when the sketch is compiled is selected in a master configuration file named glcd_Config.h. This contains the configuration files supplied with the distribution and one of these should be made active by removing the comments ‘//’ preceding the desired file name.
+Ensure that only one file is selected. You can modify the distributed files or add your own file if you want to create your own variations.
+
+There is a configuration format for each supported display type; this release provides configuration for KS0108 and SED1520 panels.
+
+You can use the standard ks0108_Arduino_Config.h file for any board, including the Mega, Sanguino or Teensy, but the performance is improved using the pin assignments given in the 
+Board specific configuration  files included in the download:
+ks0108_Arduino_Config.h    - configuration file for ks0108 type panels using the standard Arduino pins illustrated above
+ks0108_Mega_Config.h  - config for Mega using same pins as  ks0108_Mega.h from the old ks0108 library
+ks0108_Sanguino_Config.h  - config for Atmega644  using same pins as  ks0108_Sanguino.h from ks0108 library
+ks0108_Teensy_Config.h   -  config for Teensy and Teensy++
+Bear in mind that the wiring diagrams shown above are for the pin assignments in ks0108_Arduino_Config.h, if you use a different pin configuration then remember to wire your panel to match the pin definitions in the active configuration file. Note that the ks0108 configuration files have an optional define named glcdRES that will reset the display when the library is initialized at start-up. This is only needed if the reset pin on the display is not connected to the Arduino reset pin.
+
+Note that glcd_Config.h contains some other user defines that are explained in that files comments, but these should not need to be changed for normal operation. 
+
+===GLCDdiags===
+GLCDdiags is a test sketch included in the examples folder. It will validate the connections and test the memory of GLCD module as well as report the active configuration information to the serial port. If your display is not working properly then check the information displayed in the serial monitor. This shows what information the library is using and you can use this to verify if the sketch is configured correctly.  
+
+===AVR port and pin numbers===
+Pins can also be selected by AVR port and pin number. The syntax used is PIN_Pb where Pb represents a PORT and a pin#.
+For example, to specify port D bit 3 you would use PIN_D3
+The following sets glcdCSEL1 (the first chip select) to port D pin 3
+  #define glcdCSEL1	    PIN_D3
+See the avrio.h file for more details.
+
+== Troubleshooting == 
+No pixels visible on the display 
+•Check +5v and Gnd connections between Arduino and GLCD panel 
+•Check all data and command pins are wired according to the datasheet and matching the configuration settings – this is the most common cure to this problem.
+•Check the datasheet for your panel to verify appropriate timing values are set in the configuration file.
+•Check contrast voltage (typically between -3 and -4 volts) on contrast-in pin of LCD panel. While the sketch is operating, try gradually adjusting the pot through its range. Some displays are very sensitive to this setting. 
+•Check sketch has compiled ok and downloaded to Arduino. 
+•Run GLCDdiags test sketch, see Configuration section above. 
+
+Left and right side of image reversed 
+•Swap CSEL1 and CSEL2 wires (or swap pin assignments in header file) 
+
+Display garbled 
+•Check all data and command pins are wired correctly and that these match the setting in the header file. 
+•Check the datasheet for your panel to verify appropriate timing values are set in the configuration file.
