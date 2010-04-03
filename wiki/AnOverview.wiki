@@ -1,5 +1,8 @@
 = GLCD Graphical LCD Library = 
 
+http://arduino-glcd.googlecode.com/svn/trunk/glcd/build/doc/glcd_v3.jpg
+(placeholder image - new picture to follow)
+
 == Introduction ==
 This library makes it easy to use Graphical LCDs (GLCD) with Arduino.
 This is an extensive modification of the ks0108 library that has higher performance, more features, supports more Arduino boards and is easier to integrate with different panels. 
