@@ -41,8 +41,7 @@ http://arduino-glcd.googlecode.com/svn/trunk/glcd/build/doc/ks0108PanelWiring.jp
 
 === SED1520 ===
 The SED1520 uses different timing, command pins then the KS0108 and the most common panels have few pixels.
-The distribution contains a generic configuration file named sed1520_Config.h and an example called Modvk5121_Config.h
-for the VK5121 panel. 
+The distribution contains a generic configuration file named [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/sed1520_Config.h sed1520_Config.h]  and a panel specific implimentation called [http://code.google.com/p/arduino-glcd/source/browse/trunk/glcd/config/Modvk5121_Config.h Modvk5121_Config.h] for the VK5121 panel. 
 Here is the wiring for a typical SED1520 Panel:
 > image to come <
 
